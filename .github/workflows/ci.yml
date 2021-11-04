@@ -29,7 +29,7 @@ jobs:
         with:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -48,7 +48,7 @@ jobs:
         working-directory: .
       - run: npm ci
         working-directory: typegen
-      - run: npm publish || true
+      - run: npm publish --access public || true
         working-directory: typegen
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
