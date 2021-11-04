@@ -108,6 +108,8 @@ function generateMethodForOperation(methodName: string, operation: Operation, ex
     .map(({ path }) =>
       path
         .split('.')
+        // filter success responses
+        .filter((key) => key.startsWith('2'))
         // Operation.Responses.200 => Operation.Responses.$200
         .map((key, i) => (i === path.split('.').length - 1 ? `$${key}` : key))
         .join('.'),
